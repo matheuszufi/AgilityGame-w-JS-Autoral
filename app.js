@@ -16,11 +16,12 @@ const start = document.getElementById('start');
 const canv = document.getElementById('canv');
 const info = document.getElementById('info');
 const time = document.getElementById('time');
-
-
+const gameName = document.getElementById('game-name');
 
 loadEventListeners();
 moveEnemy();
+
+
 
 function loadEventListeners() {
     start.addEventListener('click', startGame);
@@ -43,19 +44,12 @@ function startGame() {
     canv.style.display = "block";
     info.style.display = "flex";
     time.style.display = "flex";
-
+    gameName.style.display = "none";
 
 // Timer
     setInterval(function timeCountDown() {
         time.innerHTML = time.value++;
-        }, 1000); // 1000 milisegundos = 1 segundo de intervalo
-
-        if(time.value === 100) {
-            gameOver();
-    }    
- 
-
-    
+        }, 1000); // 1000 milisegundos = 1 segundo de intervalo  
 }
 
 
@@ -88,40 +82,8 @@ function levelUp () {
     exp.value = 0,
     level.value += 1,
     levelOutput.innerHTML = `LEVEL ${level.value}`
-
-
-    if(level.value > 1) {
-        enemy.style.width = "90px";
-        enemy.style.height = "90px";
-       opa
-        
-
-    }
-    if(level.value > 2) {
-        enemy.style.width = "80px";
-        enemy.style.height = "80px";
-   
-   
- 
-    }
-    if(level.value > 3) {
-        enemy.style.width = "60px";
-        enemy.style.height = "60px";
-   
- 
-        
-    }
-    if(level.value > 4) {
-        enemy.style.width = "40px";
-        enemy.style.height = "40px";
-   
- 
-    }
-    if(level.value > 5) {
-        enemy.style.width = "25px";
-        enemy.style.height = "25px";
-   
- 
+    if (level.value = 2) {
+        levelTwo();
     }
 }
 
@@ -134,17 +96,17 @@ function moveEnemy() {
 
 }
 
-function gameOver() {
-    canv.style.display = "none";
-    info.style.display = "none";
-    time.style.display = "none";
-
-
-}
-
 
 function points () {
     score.value++;
     console.log(score.value);
     scoreOutput.innerHTML = `${score.value}`;
 }
+
+
+function levelTwo() {
+    level.value = 2;
+    enemy.style.animation = "animeStart2 2s infinite";
+
+}
+
